@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<view class='container0'>
+  <view wx:if='{{!alreadyIn}}' class='container1'>
+    <!--输入账号和密码-->
+    <form bindsubmit='Request_Login'>
+      <view class='inputContainer'>
+        <text>账号</text>
+        <input value='{{account_value}}' name='account'></input>
+      </view>
+      <view class='inputContainer'>
+        <text>密码</text>
+        <input password='true' value='{{password_value}}' name='password'></input> 
+      </view>
+      <view>
+      <button form-type='submit'>登录</button>
+    </view>
+    </form>
+  </view>
+
+  <view wx:else class='container1'>
+    <image class='avatar' src='../../images/user.png'></image>
+    <view class='welcome'>已登录</view>
+    <view class='notice'>您已获得管理员权限</view>
+  </view>
+</view> 

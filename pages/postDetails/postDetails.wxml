@@ -1,0 +1,41 @@
+<!--pages/postDetails/postDetails.wxml-->
+<view class="container">
+  <image class="head-image" src="{{headImgSrc?headImgSrc:'../../images/empty-img.png'}}"></image>
+  <view class="title">{{title}}</view>
+
+  <view class="desc">
+    <view class='desc-title'>
+      <image src='../../images/postDetails/addr.png'></image>
+      <text>活动地点</text>
+    </view>
+    <text class='desc-content'>{{addr}}</text>
+  </view>
+  <view class="desc">
+    <view class='desc-title'>
+      <image src='../../images/postDetails/start.png'></image>
+      <text>开始时间</text>
+    </view>
+    <text class='desc-content'>{{startTime}}</text>
+  </view>
+  <view class="desc">
+    <view class='desc-title'>
+      <image src='../../images/postDetails/end.png'></image>
+      <text>结束时间</text>
+    </view>
+    <text class='desc-content'>{{endTime}}</text>
+  </view>
+  <view class="desc">
+    <view class='desc-title'>
+      <image src='../../images/postDetails/host.png'></image>
+      <text>主办方</text>
+    </view>
+    <text class='desc-content'>{{host}}</text>
+  </view>
+
+  <view class="detail">
+    <view class='detail-title'>活动详情：</view>
+    <view class='{{isEditing?"detail-txt bottom":"detail-txt"}}'>{{details}}</view>
+  </view>
+
+  <view class='add-post' wx:if='{{isEditing}}' bindtap='handleSubmitPost'>发布活动</view>
+</view>

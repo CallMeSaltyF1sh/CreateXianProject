@@ -1,0 +1,42 @@
+<!--pages/policy/policy.wxml-->
+<view id='container'>
+  <image src='../../images/policy/banner.jpg' class='banner-img'></image>
+  <view class='search'>
+    <input class='search-input' max-length='50' placeholder='请输入查询内容' bindinput='handleSearchInput' placeholder-class='search-ph' confirm-type='search' bindconfirm='handleSearchConfirm'></input>
+    <image src='../../images/policy/search.png' class='search-icon' bindtap='handleSearchConfirm'></image>
+  </view>
+
+  <view class='labels'>
+    <scroll-view scroll-x='true' style="height:92rpx;white-space:nowrap">
+      <view class='label-wrapper'>
+        <view wx:for='{{levels}}' class='{{item.policyId==levelId?"label-item selected":"label-item"}}' data-id='{{item.policyId}}' wx:key='{{item.policyId}}' bindtap='handleChangeLevel'>
+          {{item.level}}
+        </view>
+      </view>
+    </scroll-view>
+    <scroll-view scroll-x='true' style="height:92rpx;white-space:nowrap">
+      <view class='label-wrapper'>
+        <view wx:for='{{catgs}}' class='{{item.policyId==catgId?"label-item selected":"label-item"}}' data-id='{{item.policyId}}' wx:key='{{item.policyId}}' bindtap='handleChangeCatg'>
+          {{item.classify}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class='list-wrapper'>
+    <view wx:for='{{policyList}}' class='list-item' data-pid='{{item.policyId}}' bindtap='handleSeeDetails' wx:key='{{item.policyId}}'>
+      <view class='item-title'>{{item.policyTitle}}</view>
+      <view class='item-detail' wx:if='{{item.publishInstitution}}'>发文机关：{{item.publishInstitution}}</view>
+      <view class='item-detail'>成文时间：{{item.publishTime}}</view>
+    </view>
+  </view>
+
+  <view wx:if='{{policyList.length>0}}'>
+    <view class='load-more' wx:if='{{!reachBottom}}' bindtap='handleLoadMore'>加载更多</view>
+    <view class='load-more' wx:else>已经到底啦</view>
+  </view>
+  <view wx:if='{{policyList.length==0}}'>
+    <image src='../../images/empty.png' class='emptyImg'></image>
+    <view class='emptyTxt'>空空的</view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/login/login",
+    "pages/policy/policy",
+    "pages/policyDetails/policyDetails",
+    "pages/posts/posts",
+    "pages/postDetails/postDetails",
+    "pages/create/create",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#C80405",
+    "navigationBarTitleText": "创西安",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#fff",
+    "backgroundColor": "#C80405",
+    "selectedColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "管理员",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

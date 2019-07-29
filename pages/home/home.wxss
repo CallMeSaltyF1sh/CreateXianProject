@@ -1,0 +1,143 @@
+/* pages/home/home.wxss */
+.thisPage{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+}
+/*轮播图*/
+.roatationChart{ 
+  width: 100%;
+  height: 130rpx;
+}
+.swiper-img{
+  width: 100%;
+  height: 130rpx;
+}
+
+/*搜索框*/
+.inputSearch{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 78rpx;
+  margin: 34rpx 0 0 0;
+}
+.inputSearch input{
+  width: 610rpx;
+  height: 88rpx;
+  padding-left: 20rpx;
+  box-shadow: 10rpx -6rpx 20rpx 2rpx #dfdfdf;
+  border-radius: 20rpx;
+}
+.search-ph{
+  color: #999;
+  font-size: 35rpx;
+}
+
+/*入口图标*/
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.icon-wrapper{
+  margin: 50rpx 0 30rpx 55rpx;
+}
+.img-wrapper{
+  position: relative;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 26rpx;
+  background: -webkit-linear-gradient(top,rgba(253, 156, 11, 0.925),rgb(253, 59, 10));
+}
+.img-wrapper image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 70rpx;
+  height: 70rpx;
+  margin: auto;
+}
+.icon-txt{
+  width: 100%;
+  margin-top: 8rpx;
+  color: #666;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.head{
+  border-bottom: solid #ccc 1rpx;
+  border-top: solid #ccc 1rpx;
+  height: 88rpx;
+  box-shadow: 0 3rpx 10rpx #eee;
+}
+.head text{
+  position: relative;
+  left: 30rpx;
+  border-left: solid #C80405 8rpx;
+  line-height: 82rpx;
+  padding-left: 15rpx;
+  color: #555;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/*政策列表*/
+.list-item{
+  width: 100%;
+  padding: 30rpx 22rpx; 
+  box-sizing: border-box;
+  border-top: 2rpx solid #eee;
+}
+.list-item:last-child{
+  border-bottom: 2rpx solid #eee;
+}
+.item-title{
+  margin-bottom: 30rpx;
+  width: 100%;
+  font-size: 36rpx;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.item-detail{
+  font-size: 32rpx;
+  color: #aaa;
+  padding-left: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.load-more{
+  width: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #555;
+}
+.emptyImg{
+  position: absolute;
+  width: 125rpx;
+  height: 110rpx;
+  left: 50%;
+  margin-left: -62.5rpx;
+  margin-top: 145rpx;
+}
+.emptyTxt{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+  margin-top: 270rpx;
+  letter-spacing: 2rpx;
+}

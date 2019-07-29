@@ -1,0 +1,51 @@
+/* pages/login/login.wxss */
+.container1{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+.inputContainer{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 28rpx;
+}
+.inputContainer text{
+  color: #555;
+}
+input{
+  border-bottom: solid #8a8a8a 1rpx;
+  margin-left: 20rpx;
+}
+button{
+  color: white;
+  background-color: #C80405;
+  width: 468rpx;
+  height:82rpx;
+  font-size: 38rpx;
+  line-height: 72rpx;
+  margin-top: 180rpx; 
+}
+
+.avatar{
+  width: 280rpx;
+  height: 280rpx;
+  border-radius: 50%;
+  border: 8rpx solid #ddd;
+  box-shadow: 0 12rpx 10rpx #eee;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.welcome{
+  color: #888;
+  margin-top: 30rpx;
+  font-size: 38rpx;
+}
+.notice{
+  color: #aaa;
+  margin-top: 50rpx;
+  font-size: 38rpx;
+}

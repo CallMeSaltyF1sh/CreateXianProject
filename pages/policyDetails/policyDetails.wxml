@@ -1,0 +1,22 @@
+<!--pages/policyDetails/policyDetails.wxml-->
+<view id='container'>
+  <view class='top-detail'>
+    <view class='title'>
+      标题：<text class='title-txt'>{{title}}</text>
+      <!--<a href='{{originalUrl}}'>访问原网址</a>-->
+    </view>
+    <view class='level'>级别：{{level}}</view>
+    <view class=''>发文单位：{{institution}}</view>
+    <view class='catg'>类别：{{catg}}</view>
+    <view class='time'>发布时间：{{time}}</view>
+    <view class='file' wx:if='{{fileUrl}}'>
+      <image src='../../images/policy/doc.png' class='file-img'></image>
+      <text>{{title}}.docx</text>
+      <text class='file-download' data-url='{{fileUrl}}' bindtap='handleDownloadFile'>下载附件</text>
+    </view>
+    <view class='content'>
+      <text class='content-title'>政策内容：</text>
+      <view>{{content}}</view>
+    </view>
+  </view>
+</view>

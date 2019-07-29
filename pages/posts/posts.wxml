@@ -1,0 +1,19 @@
+<!--pages/posts/posts.wxml-->
+<view wx:for="{{postList}}" wx:if='{{postList.length>0}}' wx:key='{{item.activityId}}' bindtap="onPostTap" data-post-id="{{item.activityId}}" class="post-container">
+  <image class="post-image" src="{{item.imgSrc?item.imgSrc:'../../images/empty-img.png'}}"></image>
+  <text class="post-title">{{item.activityTitle}}</text>
+  <view class="post-author-date">
+    <text class="post-date">{{item.beginningTime}}</text>
+    <text class="post-author">{{item.sponsor}}</text>
+  </view>
+</view>
+<view wx:if='{{postList.length>0}}'>
+  <view class='{{isAdmin?"load-more bottom":"load-more"}}' wx:if='{{!reachBottom}}' bindtap='handleLoadMore'>加载更多</view>
+  <view class='{{isAdmin?"load-more bottom":"load-more"}}' wx:else>已经到底啦</view>
+</view>
+
+<view wx:if='{{postList.length==0}}' class='empty'>
+  <image src='../../images/posts/plane.png' class='notice-img'></image>
+  <view class='tip'>暂时没有活动哦</view>
+</view>
+<view class='add-post' wx:if='{{isAdmin}}' bindtap='handleCreate'>添加活动</view>

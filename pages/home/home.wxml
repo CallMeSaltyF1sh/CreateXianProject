@@ -1,0 +1,54 @@
+<!--pages/home/home.wxml-->
+<view class='thisPage'>
+  <!--轮播图-->
+  <view class='roatationChart'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='{{circular}}'>
+      <swiper-item wx:for="{{imgUrls}}">
+        <image src="{{item}}" class='swiper-img' />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!--搜索框-->
+  <view class='inputSearch'>
+    <input placeholder='请输入查询内容' max-length='50' bindinput='handleSearchInput' placeholder-class='search-ph' confirm-type='search' bindconfirm='handleSearchConfirm'></input>
+  </view>
+  <!--入口图标-->
+  <view class='icons'>
+    <view class='icon-wrapper' bindtap='handleJumpToPolicy'>
+      <view class='img-wrapper'>
+        <image src='../../images/home/policy.png'></image>
+      </view>
+      <view class='icon-txt'>政策法规</view>
+    </view>
+
+    <view class='icon-wrapper'>
+      <view class='img-wrapper' bindtap='handleJumpToPost'>
+        <image src='../../images/home/activity.png'></image>
+      </view>
+      <view class='icon-txt'>活动</view>
+    </view>
+  </view>
+  <!--最新动态-->
+  <view class='activity'>
+    <view class='head'>
+      <text>最新动态</text>
+    </view>
+
+    <view class='list-wrapper'>
+      <view wx:for='{{policyList}}' class='list-item' data-pid='{{item.policyId}}' bindtap='handleSeeDetails' wx:key='{{item.policyId}}'>
+        <view class='item-title'>{{item.policyTitle}}</view>
+        <view class='item-detail' wx:if='{{item.publishInstitution}}'>发文机关：{{item.publishInstitution}}</view>
+        <view class='item-detail'>成文时间：{{item.publishTime}}</view>
+      </view>
+    </view>
+
+    <view wx:if='{{policyList.length>0}}'>
+      <view class='load-more' wx:if='{{!reachBottom}}' bindtap='handleLoadMore'>加载更多</view>
+      <view class='load-more' wx:else>已经到底啦</view>
+    </view>
+    <view wx:if='{{policyList.length==0}}'>
+      <image src='../../images/empty.png' class='emptyImg'></image>
+      <view class='emptyTxt'>空空的</view>
+    </view>
+  </view>
+</view>

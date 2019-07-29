@@ -1,0 +1,56 @@
+<!--pages/create/create.wxml-->
+<view class='container'>
+  <view class='upload-img'>
+    <view class='header' bindtap='handleUploadImg' wx:if='{{!imgFilePath}}'>
+      <view class='title1'>上传封面图</view>
+      <view class='title2'>最佳尺寸 750*410</view>
+    </view>
+    <image src='{{imgFilePath}}' wx:if='{{imgFilePath}}' class='img'></image>
+    <image src='../../images/create/delete.png' wx:if='{{imgFilePath}}' bindtap='handleDelete' class='delete'></image>
+  </view>
+  <view class='wrapper'>
+    <label class='label' for='pname'>活动名称</label>
+    <input maxlength='50' placeholder-class='ph-class' type='text' id='pname' placeholder='点击编辑' bindinput='handleName' value="{{input}}" />
+  </view>
+  <view class='wrapper'>
+    <label class='label' for='paddr'>活动地点</label>
+    <input maxlength='100' placeholder-class='ph-class' type='text' id='paddr' placeholder='点击编辑' bindinput='handleAddr' value="{{input}}" />
+  </view>
+  <view class='wrapper'>
+    <label class='label' for='phost'>主办方</label>
+    <input maxlength='50' placeholder-class='ph-class' type='text' id='phost' placeholder='点击编辑' bindinput='handleHost' value="{{input}}" />
+  </view>
+  <view class='wrapper'>
+    <label class='label' for='startTime'>开始时间</label>
+    <picker mode="date" value="{{startDate}}" start="2019-01-01" end="2029-01-01" bindchange="handleStartDateChange">
+      <view class="picker">
+        日期：<text class='picker-txt'>{{startDate}}</text>
+      </view>
+    </picker>
+    <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="handleStartTimeChange">
+      <view class="picker">
+        时间：<text class='picker-txt'>{{startTime}}</text>
+      </view>
+    </picker>
+  </view>
+  <view class='wrapper'>
+    <label class='label' for='endTime'>结束时间</label>
+    <picker mode="date" value="{{endDate}}" start="2019-01-01" end="2029-01-01" bindchange="handleEndDateChange">
+      <view class="picker">
+        日期：<text class='picker-txt'>{{endDate}}</text>
+      </view>
+    </picker>
+    <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="handleEndTimeChange">
+      <view class="picker">
+        时间：<text class='picker-txt'>{{endTime}}</text>
+      </view>
+    </picker>
+  </view>
+  <view class='wrapper desc-wrapper'>
+    <label class='label' for='pdesc'>活动描述</label>
+    <textarea maxlength='140' placeholder-class='ph-class' type='text' id='pdesc' placeholder='点击编辑' bindinput='handleDesc' value="{{pdesc}}" bindfocus='handleFocus' bindblur='handleBlur' wx:if='{{areaEditing}}'></textarea>
+    <view class='ph-class pdesc' wx:if='{{!areaEditing}}' bindtap='handleEdit'>{{pdesc}}</view>
+  </view>
+
+  <view class='add-post' bindtap='handleView'>预览并发布</view>
+</view>

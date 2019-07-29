@@ -1,0 +1,33 @@
+<!--pages/search/search.wxml-->
+<view class='container'>
+  <view class='header'>搜索结果</view>
+  <view class='bar'>
+    <view class='{{selectedBar===0?"bar-item selected":"bar-item"}}' data-id='0' bindtap='handleChangeBar'>政策法规</view>
+    <view class='{{selectedBar===1?"bar-item selected":"bar-item"}}' data-id='1' bindtap='handleChangeBar'>活动</view>
+  </view>
+  <view class='result' wx:if='{{selectedBar===0}}'>
+    <view wx:for='{{policyList}}' class='list-item' data-pid='{{item.policyId}}' bindtap='handleSeePolicyDetails' wx:key='{{item.policyId}}'>
+      <view class='item-title'>{{item.policyTitle}}</view>
+      <view class='item-detail' wx:if='{{item.publishInstitution}}'>发文机关：{{item.publishInstitution}}</view>
+      <view class='item-detail'>成文时间：{{item.publishTime}}</view>
+    </view>
+  </view>
+  <view class='result' wx:if='{{selectedBar===1}}'>
+    <view wx:for="{{postList}}" wx:if='{{postList.length>0}}' wx:key='{{item.activityId}}' bindtap="onPostTap" data-post-id="{{item.activityId}}" class="post-container">
+      <image class="post-image" src="{{item.imgSrc?item.imgSrc:'../../images/empty-img.png'}}"></image>
+      <text class="post-title">{{item.activityTitle}}</text>
+      <view class="post-author-date">
+        <text class="post-date">{{item.beginningTime}}</text>
+        <text class="post-author">{{item.sponsor}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if='{{resultList.length>0}}'>
+    <view class='load-more' wx:if='{{!reachBottom}}' bindtap='handleLoadMore'>加载更多</view>
+    <view class='load-more' wx:else>已经到底啦</view>
+  </view>
+  <view wx:if='{{resultList.length==0}}'>
+    <image src='../../images/empty.png' class='emptyImg'></image>
+  </view>
+</view>
