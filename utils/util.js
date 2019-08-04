@@ -40,7 +40,12 @@ const checkSessionid = () => {
   }
 }
 
+const replaceChar = str => {
+  return str.replace(/\\+|\^+|\*+|\%+|\(+|\)+|\'+|\"+|`+|\/+/g, '');
+}
+
 module.exports = {
   formatTime: formatTime,
-  checkSessionid: checkSessionid
+  checkSessionid: checkSessionid,
+  replaceChar: replaceChar
 }

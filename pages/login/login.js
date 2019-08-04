@@ -1,4 +1,6 @@
 // pages/login/login.js
+const util = require('../../utils/util.js');
+
 Page({
 
   /**
@@ -13,6 +15,8 @@ Page({
   Request_Login: function (e) {
     let acc = e.detail.value.account;      //账号
     let pas = e.detail.value.password;     //密码
+    acc = util.replaceChar(acc)
+    pas = util.replaceChar(pas)
     let self = this;
     wx.request({
       url: 'https://cxa.wizzstudio.com/login/manager?managerName=' + acc + '&managerPassword=' + pas,

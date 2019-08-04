@@ -13,12 +13,18 @@ Page({
     content: '',
     id: '',
     time: '',
-    catg: ''
+    catg: '',
+    fileType: ''
   },
 
   handleDownloadFile: function(e){
     let self = this;
     let url = e.currentTarget.dataset.url;
+    let type = this.data.fileType;
+    let support = ['doc','xls','ppt','pdf','docx','xlsx','pptx']
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.downloadFile({
       url: url, 
       success(res) {
@@ -26,19 +32,61 @@ Page({
         if (res.statusCode === 200) {
           var filePath = res.tempFilePath;
           console.log(filePath);
-          wx.openDocument({
-            fileType: 'doc',
-            filePath: filePath,
-            success: function (res) {
-              console.log('打开文档成功')
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          })
+          if(support.includes(type)){
+            wx.openDocument({
+              fileType: type,
+              filePath: filePath,
+              success: function (res) {
+                wx.hideLoading();
+                console.log('打开成功')
+              },
+              fail: function (res) {
+                console.log(res);
+                wx.hideLoading();
+                wx.showModal({
+                  title: '提示',
+                  content: '文件打开失败！',
+                  confirmColor: '#C80405',
+                  showCancel: false
+                });
+              }
+            })
+          }else{
+            wx.saveFile({
+              tempFilePath: filePath,
+              success: res => {
+                wx.hideLoading();
+                const savedFilePath = res.savedFilePath
+                wx.showModal({
+                  title: '提示',
+                  content: '文件已保存至：'+savedFilePath,
+                  showCancel: false,
+                  confirmColor: '#C80405'
+                })
+              },
+              fail: err => {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '提示',
+                  content: '文件保存失败!',
+                  showCancel: false,
+                  confirmColor: '#C80405'
+                })
+              }
+            })
+            
+          }
+          
         }
       }
     })
+  },
+
+  formatContent: function(str){
+    let regex = /\s+/g;
+    str = ' '.concat(str);
+    console.log(str.replace(regex, '\n'))
+    return str.replace(regex, '\n') 
   },
 
   /**
@@ -59,11 +107,18 @@ Page({
           institution: data.publishInstitution,
           catg: data.classify,
           title: data.poicyTitle,
-          content: data.policyContent,
+          content: self.formatContent(data.policyContent),
           id: data.policyId,
           time: data.publishTime,
           level: data.level
         })
+        if(data.fileUrl){
+          let index = data.fileUrl.lastIndexOf('.') + 1;
+          let type = data.fileUrl.substring(index)
+          self.setData({
+            fileType: type
+          })
+        }
       }
     })
   },

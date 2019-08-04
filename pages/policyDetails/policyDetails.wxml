@@ -11,12 +11,12 @@
     <view class='time'>发布时间：{{time}}</view>
     <view class='file' wx:if='{{fileUrl}}'>
       <image src='../../images/policy/doc.png' class='file-img'></image>
-      <text>{{title}}.docx</text>
+      <text>{{title}}.{{fileType}}</text>
       <text class='file-download' data-url='{{fileUrl}}' bindtap='handleDownloadFile'>下载附件</text>
     </view>
     <view class='content'>
       <text class='content-title'>政策内容：</text>
-      <view>{{content}}</view>
+      <text>{{content}}</text>
     </view>
   </view>
 </view>

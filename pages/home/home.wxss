@@ -131,13 +131,13 @@
   height: 110rpx;
   left: 50%;
   margin-left: -62.5rpx;
-  margin-top: 145rpx;
+  margin-top: 125rpx;
 }
 .emptyTxt{
   position: absolute;
   width: 100%;
   text-align: center;
   color: #ccc;
-  margin-top: 270rpx;
+  margin-top: 250rpx;
   letter-spacing: 2rpx;
 }
